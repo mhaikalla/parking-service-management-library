@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "created_at": "2024-06-11T04:29:42.6772963Z",
+    "updated_at": "2024-06-11T08:16:09.5260813Z",
+    "deleted_at": null,
+    "name": "B2",
+    "floor": "P3",
+    "isParked": false
+  },
+  {
+    "id": 2,
+    "created_at": "2024-06-11T04:33:44.0272932Z",
+    "updated_at": "2024-06-11T04:33:44.0272932Z",
+    "deleted_at": null,
+    "name": "B2",
+    "floor": "P1",
+    "isParked": true
+  }
+]
