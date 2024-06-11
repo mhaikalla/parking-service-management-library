@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mhaikalla/parking-service-management-library/pkg/condutils"
+	"parking-service/pkg/condutils"
 
 	"golang.org/x/crypto/pbkdf2"
 )

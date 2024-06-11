@@ -1,8 +1,8 @@
 package parking
 
 import (
-	UsecaseParking "github.com/mhaikalla/parking-service-management-library/components/usecase/usecaseParking"
-	"github.com/mhaikalla/parking-service-management-library/pkg/file"
+	UsecaseParking "parking-service/components/usecase/usecaseParking"
+	"parking-service/pkg/file"
 
 	validation "github.com/go-playground/validator/v10"
 )

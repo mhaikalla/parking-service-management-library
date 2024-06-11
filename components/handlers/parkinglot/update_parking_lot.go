@@ -3,9 +3,9 @@ package parkinglot
 import (
 	"strconv"
 
-	"github.com/mhaikalla/parking-service-management-library/components/models/request"
-	"github.com/mhaikalla/parking-service-management-library/pkg/contexts"
-	"github.com/mhaikalla/parking-service-management-library/pkg/errs"
+	"parking-service/components/models/request"
+	"parking-service/pkg/contexts"
+	"parking-service/pkg/errs"
 )
 
 func (h *Handlers) UpdateParkingLot() func(i interface{}) error {

@@ -3,7 +3,7 @@ package contexts
 import (
 	"context"
 
-	"github.com/mhaikalla/parking-service-management-library/pkg/logs"
+	"parking-service/pkg/logs"
 )
 
 var (

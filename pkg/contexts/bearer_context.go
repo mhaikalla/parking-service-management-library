@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mhaikalla/parking-service-management-library/pkg/jwt"
-	"github.com/mhaikalla/parking-service-management-library/pkg/logs"
-	"github.com/mhaikalla/parking-service-management-library/pkg/payloadhooks"
+	"parking-service/pkg/jwt"
+	"parking-service/pkg/logs"
+	"parking-service/pkg/payloadhooks"
 
 	"github.com/labstack/echo/v4"
 )
@@ -142,7 +142,7 @@ func (bc BearerContext) LoadEncrypted(structure interface{}) error {
 	return json.Unmarshal(buff, &structure)
 }
 
-// Consume like github.com/mhaikalla/parking-service-management-library/pkg/interceptors.BearerContext#Load method,
+// Consume like parking-service/pkg/interceptors.BearerContext#Load method,
 // but just validating payload and trigger preRespHook activation.
 func (bc BearerContext) Consume() error {
 	if bc.hookEnable && bc.preReqHook != nil {

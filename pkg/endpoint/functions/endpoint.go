@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/mhaikalla/parking-service-management-library/pkg/endpoint/models"
+	"parking-service/pkg/endpoint/models"
 )
 
 // ParseMapConfig parse map config into EndpointConfig object

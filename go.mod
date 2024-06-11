@@ -1,4 +1,4 @@
-module github.com/mhaikalla/github.com/mhaikalla/parking-service-management-library-management-library
+module parking-service
 
 go 1.16
 

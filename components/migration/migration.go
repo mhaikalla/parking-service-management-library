@@ -3,7 +3,7 @@ package migration
 import (
 	"log"
 
-	modelsDB "github.com/mhaikalla/parking-service-management-library/pkg/database"
+	modelsDB "parking-service/pkg/database"
 )
 
 func RunMigration(dbconnection modelsDB.IServerDB) {

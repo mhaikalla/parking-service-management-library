@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mhaikalla/parking-service-management-library/pkg/condutils"
+	"parking-service/pkg/condutils"
 
 	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"

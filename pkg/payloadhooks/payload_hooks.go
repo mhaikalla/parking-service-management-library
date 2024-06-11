@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mhaikalla/parking-service-management-library/pkg/condutils"
-	"github.com/mhaikalla/parking-service-management-library/pkg/crypts"
+	"parking-service/pkg/condutils"
+	"parking-service/pkg/crypts"
 )
 
 const (

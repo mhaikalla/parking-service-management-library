@@ -298,7 +298,7 @@ func Test_getFnName(t *testing.T) {
 		{
 			"test 1",
 			args{fn: getFnName},
-			"github.com/mhaikalla/parking-service-management-library/pkg/condutils.getFnName",
+			"parking-service/pkg/condutils.getFnName",
 		},
 	}
 	for _, tt := range tests {
@@ -368,7 +368,7 @@ func TestEvalExpr(t *testing.T) {
 				1,
 				2,
 			}},
-			[]interface{}{errors.New("call github.com/mhaikalla/parking-service-management-library/pkg/condutils.TestEvalExpr.func3, panicked: reflect: Call with too many input arguments")},
+			[]interface{}{errors.New("call parking-service/pkg/condutils.TestEvalExpr.func3, panicked: reflect: Call with too many input arguments")},
 		},
 	}
 	for _, tt := range tests {

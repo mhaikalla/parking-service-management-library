@@ -13,8 +13,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mhaikalla/parking-service-management-library/pkg/condutils"
-	"github.com/mhaikalla/parking-service-management-library/pkg/errs"
+	"parking-service/pkg/condutils"
+	"parking-service/pkg/errs"
 )
 
 // parseBodyPayload parse body payload based object type, return reader, length of payload, and an error.
