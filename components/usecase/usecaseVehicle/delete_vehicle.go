@@ -5,11 +5,11 @@ import (
 	"strconv"
 	"time"
 
-	models "parking-service/components/models/entity"
-	"parking-service/components/models/request"
-	"parking-service/components/models/response"
-	"parking-service/pkg/contexts"
-	"parking-service/pkg/errs"
+	models "github.com/mhaikalla/parking-service-management-library/components/models/entity"
+	"github.com/mhaikalla/parking-service-management-library/components/models/request"
+	"github.com/mhaikalla/parking-service-management-library/components/models/response"
+	"github.com/mhaikalla/parking-service-management-library/pkg/contexts"
+	"github.com/mhaikalla/parking-service-management-library/pkg/errs"
 )
 
 func (ctx *usecaseObj) DeleteVehicles(dc contexts.BearerContext, req *request.DeleteVehicleRequest) (*response.BaseMessageResponse, *errs.Errs) {

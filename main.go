@@ -8,22 +8,22 @@ import (
 	"runtime/debug"
 	"time"
 
-	parkingHandler "parking-service/components/handlers/parking"
-	parkingLotHandler "parking-service/components/handlers/parkinglot"
-	vehicleHandler "parking-service/components/handlers/vehicle"
-	"parking-service/pkg/condutils"
-	"parking-service/pkg/file"
-	"parking-service/pkg/router"
-	validatorRequest "parking-service/pkg/validator"
+	parkingHandler "github.com/mhaikalla/parking-service-management-library/components/handlers/parking"
+	parkingLotHandler "github.com/mhaikalla/parking-service-management-library/components/handlers/parkinglot"
+	vehicleHandler "github.com/mhaikalla/parking-service-management-library/components/handlers/vehicle"
+	"github.com/mhaikalla/parking-service-management-library/pkg/condutils"
+	"github.com/mhaikalla/parking-service-management-library/pkg/file"
+	"github.com/mhaikalla/parking-service-management-library/pkg/router"
+	validatorRequest "github.com/mhaikalla/parking-service-management-library/pkg/validator"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	// "parking-service/pkg/serverpatch"
-	// "parking-service/pkg/staticdatas"
+	// "github.com/mhaikalla/parking-service-management-library/pkg/serverpatch"
+	// "github.com/mhaikalla/parking-service-management-library/pkg/staticdatas"
 
-	"parking-service/pkg/config"
-	"parking-service/pkg/logs"
+	"github.com/mhaikalla/parking-service-management-library/pkg/config"
+	"github.com/mhaikalla/parking-service-management-library/pkg/logs"
 )
 
 var (

@@ -1,8 +1,8 @@
 package parkinglot
 
 import (
-	UsecaseParkingLot "parking-service/components/usecase/usecaseParkingLot"
-	"parking-service/pkg/file"
+	UsecaseParkingLot "github.com/mhaikalla/parking-service-management-library/components/usecase/usecaseParkingLot"
+	"github.com/mhaikalla/parking-service-management-library/pkg/file"
 
 	validation "github.com/go-playground/validator/v10"
 )

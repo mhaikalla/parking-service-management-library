@@ -3,11 +3,11 @@ package usecaseParkingLot
 import (
 	"encoding/json"
 
-	models "parking-service/components/models/entity"
-	"parking-service/components/models/request"
-	"parking-service/components/models/response"
-	"parking-service/pkg/contexts"
-	"parking-service/pkg/errs"
+	models "github.com/mhaikalla/parking-service-management-library/components/models/entity"
+	"github.com/mhaikalla/parking-service-management-library/components/models/request"
+	"github.com/mhaikalla/parking-service-management-library/components/models/response"
+	"github.com/mhaikalla/parking-service-management-library/pkg/contexts"
+	"github.com/mhaikalla/parking-service-management-library/pkg/errs"
 )
 
 func (ctx *usecaseObj) GetParkingLots(dc contexts.BearerContext, req *request.GetParkingLotRequest) (*response.GetParkingLotsResponse, *errs.Errs) {

@@ -5,9 +5,9 @@ import (
 	"regexp"
 	"strings"
 
-	"parking-service/pkg/contexts"
-	"parking-service/pkg/errs"
-	"parking-service/pkg/logs"
+	"github.com/mhaikalla/parking-service-management-library/pkg/contexts"
+	"github.com/mhaikalla/parking-service-management-library/pkg/errs"
+	"github.com/mhaikalla/parking-service-management-library/pkg/logs"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"

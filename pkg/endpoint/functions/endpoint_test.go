@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"parking-service/pkg/endpoint/models"
+	"github.com/mhaikalla/parking-service-management-library/pkg/endpoint/models"
 )
 
 func TestParseMapConfig(t *testing.T) {

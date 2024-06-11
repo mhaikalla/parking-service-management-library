@@ -10,7 +10,7 @@ import (
 	"os"
 	"strconv"
 
-	"parking-service/pkg/condutils"
+	"github.com/mhaikalla/parking-service-management-library/pkg/condutils"
 
 	"strings"
 	"time"

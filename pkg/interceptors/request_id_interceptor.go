@@ -1,8 +1,8 @@
 package interceptors
 
 import (
-	"parking-service/pkg/contexts"
-	"parking-service/pkg/logs"
+	"github.com/mhaikalla/parking-service-management-library/pkg/contexts"
+	"github.com/mhaikalla/parking-service-management-library/pkg/logs"
 
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"

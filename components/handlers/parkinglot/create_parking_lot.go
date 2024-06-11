@@ -4,9 +4,9 @@ import (
 	"log"
 	"strconv"
 
-	"parking-service/components/models/request"
-	"parking-service/pkg/contexts"
-	"parking-service/pkg/errs"
+	"github.com/mhaikalla/parking-service-management-library/components/models/request"
+	"github.com/mhaikalla/parking-service-management-library/pkg/contexts"
+	"github.com/mhaikalla/parking-service-management-library/pkg/errs"
 )
 
 func (h *Handlers) CreateParkingLot() func(i interface{}) error {

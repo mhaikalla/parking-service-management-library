@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"strings"
 
-	"parking-service/pkg/condutils"
-	"parking-service/pkg/contexts"
-	"parking-service/pkg/errs"
-	"parking-service/pkg/logs"
+	"github.com/mhaikalla/parking-service-management-library/pkg/condutils"
+	"github.com/mhaikalla/parking-service-management-library/pkg/contexts"
+	"github.com/mhaikalla/parking-service-management-library/pkg/errs"
+	"github.com/mhaikalla/parking-service-management-library/pkg/logs"
 )
 
 const (

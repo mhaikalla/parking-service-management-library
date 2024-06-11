@@ -1,7 +1,7 @@
 package router
 
 import (
-	"parking-service/pkg/interceptors"
+	"github.com/mhaikalla/parking-service-management-library/pkg/interceptors"
 
 	echo "github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"

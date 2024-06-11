@@ -4,9 +4,9 @@ import (
 	"context"
 	"net/http"
 
-	endpointFn "parking-service/pkg/endpoint/functions"
-	"parking-service/pkg/errs"
-	"parking-service/pkg/httpc"
+	endpointFn "github.com/mhaikalla/parking-service-management-library/pkg/endpoint/functions"
+	"github.com/mhaikalla/parking-service-management-library/pkg/errs"
+	"github.com/mhaikalla/parking-service-management-library/pkg/httpc"
 )
 
 // ResponseCM ...

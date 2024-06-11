@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"parking-service/pkg/errs"
+	"github.com/mhaikalla/parking-service-management-library/pkg/errs"
 )
 
 func TestIsEmpty(t *testing.T) {
@@ -137,7 +137,7 @@ func TestIsError(t *testing.T) {
 			&struct{ Error error }{},
 		},
 		{
-			"package parking-service/pkg/errs",
+			"package github.com/mhaikalla/parking-service-management-library/pkg/errs",
 			args{maybeErr: errs.NewErrContext().SetError(errors.New("test"))},
 			true,
 			errs.NewErrContext().SetError(errors.New("test")),

@@ -6,13 +6,13 @@ import (
 	"sync"
 	"time"
 
-	"parking-service/components/constant"
-	models "parking-service/components/models/entity"
-	"parking-service/components/models/request"
-	"parking-service/components/models/response"
-	"parking-service/pkg/contexts"
-	"parking-service/pkg/errs"
-	"parking-service/pkg/file"
+	"github.com/mhaikalla/parking-service-management-library/components/constant"
+	models "github.com/mhaikalla/parking-service-management-library/components/models/entity"
+	"github.com/mhaikalla/parking-service-management-library/components/models/request"
+	"github.com/mhaikalla/parking-service-management-library/components/models/response"
+	"github.com/mhaikalla/parking-service-management-library/pkg/contexts"
+	"github.com/mhaikalla/parking-service-management-library/pkg/errs"
+	"github.com/mhaikalla/parking-service-management-library/pkg/file"
 )
 
 func NewParkingUsecase(ctx ...interface{}) IUsecaseParking {
