@@ -27,7 +27,7 @@ import (
 )
 
 var (
-	configFile = "configs/dev-default.yaml"
+	configFile = "configs/config.yaml"
 )
 
 func main() {
@@ -72,6 +72,8 @@ func main() {
 
 	server.Handle("POST", "/api/v1/parking-management/parking-in", parkingHandler.SetParkingIn())
 	server.Handle("POST", "/api/v1/parking-management/parking-out", parkingHandler.SetParkingOut())
+	server.Handle("GET", "/api/v1/parking-management/get-parking-data", parkingHandler.GetParkingData())
+	server.Handle("GET", "/api/v1/parking-management/get-count-parking-data", parkingHandler.GetCountParkingData())
 
 	server.Handle("GET", "/api/v1/parking-management/parking-lot/:id", parkingLotHandler.GetDetailParkingLot())
 	server.Handle("GET", "/api/v1/parking-management/parking-lots", parkingLotHandler.GetParkingLot())

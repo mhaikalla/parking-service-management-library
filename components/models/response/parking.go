@@ -12,3 +12,11 @@ type ParkingOutResponse struct {
 	TanggalMasuk  string `json:"tanggal_masuk"`
 	TanggalKeluar string `json:"tanggal_keluar"`
 }
+
+type GetDataParkingResponse struct {
+	PlatNomor []string `json:"plat_nomor"`
+}
+
+type GetCountParkingResponse struct {
+	JumlahKendaraan int `json:"jumlah_kendaraan"`
+}

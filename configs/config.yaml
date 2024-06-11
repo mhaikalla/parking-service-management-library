@@ -1,0 +1,135 @@
+server:
+  port: 8080
+  listen: 0.0.0.0:8080
+  debug: true
+  middlewares:
+    - log
+    - requestid
+    - recover
+
+file_storage:
+  path: storage/ 
+
+jwt:
+  encryption_method: A128CBC-HS256     # if this key exists, will using JWE instead of JWS
+  key_algo: RSA-OAEP-256
+  compression_method: none             # required for JWE
+  enable: true
+  duration: 2591940
+
+cache:
+  provider: redis
+  addr: 127.0.0.1:6379
+  password: ""
+  db: 0
+
+cache_read_only:
+  provider: redis
+  addr: 127.0.0.1:6379
+  password: ""
+  db: 0
+
+cache_token:
+  provider: redis
+  addr: 127.0.0.1:6379
+  password: ""
+  db: 0
+
+http_client:
+  upstreams:
+    timeout: 60
+
+secrets:
+  jwt:
+    key: |-
+      -----BEGIN PRIVATE KEY-----
+      MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCKfkiAJjyuIDRG
+      pfYRbO/Z2IkDaXpi2dZqBpSdMH8QSgxCGTWNM5ATeKZjCDZtAMjLnlBuYBXcBviE
+      N6puy6nFjun+j5LmMcEe2oU1ulO7Rma2T+bPK4Uy4JML7McX3Xci56OGFCipha0v
+      a+ePCIfGblT3uPaQhmaoJmnH2n4raBV0JKYNRZPQS36IddcCzMTrJglMQtK1woPq
+      3q6a6vtNodGy+ubll7e9z2jo9u+yuhNdVpEorfOw/2qx513IWAWd6TXRJJxbUu64
+      IS5e2BDBSBe0fFuwtX4tbyDIuJYnGZYqrokptBLsqYytbs0Y0setH4MFm3AOZA+4
+      QGhV/CP9AgMBAAECggEAVkjNZMHt5lJ8H1QA1eR4HtJwsqaBsJqlopMM/k4brAtm
+      TbwlCB8K8Yamq2aPeiQV9f5hgBLvK5FQPhfsYHEVCde7Y3USAccX2eAtREcdKb13
+      +rgXRhWIPCV8l95iQDUjp6SH1d4zY0K8nqHst8mJxhAxcdFUFMEXrkWYfAJdvy58
+      X6EZNjNZjiqXlyiZnCzZvBHVino+udpddMUdlsPB2IV02sMxV6kcPgli9ig0zWog
+      Jf4UirRPLBKRjE3buvP2KWBdsZ4Sv2M+QK4WEyUupK68Wm0nWIe73GZwjwt70L1e
+      yCa1p9uqS/f0J0tJzdIoIWcjEsVgH2T0q7U9v4FqIQKBgQDzbSwouDtSoRk+YZWX
+      AiD5DHEulfc7wrium8ySRb5BY966P/tX5EtdjnARxWwNiIkG9Zu+vMXRUrvn07U7
+      K/qzXSMFg/MtnIAWTBj70eIIQt9xtzPiYAkD300SH/4zinuJaV23mEqfHBuxRUic
+      4/XM0UWdemtErJEhYazJEaOo5QKBgQCRpZRpsyIEvAhdK3hzFWovHT/4TAyr5V6q
+      z8qTrzGM011ZnmWsXgGS2Z+ZWafX+pX7SCKVOU+UXl2btzur2Bxig76KBY5ywVGs
+      DS5huqDXWJmO90LOtgerM73l+L+iRGHQJ59RKpRuN9Prs0oQLHZE7RKNqUe2iMid
+      6xN9oaHVOQKBgQDii3fNbafH/qW/qJHPN+v329x5vpeYxl+aIOUCPGYT9R4Tt/fy
+      lESPjUA/SbyF28uq7mlD2etAI/88gYroxsVKqCMvvt1SVZPfLHMT6QCzL4lEC3v9
+      8eJx+B+B/sRUs0zFVYoik1jfOwmKsTAi0wSu2RQwuv2ZrABlUMG9Xu0xAQKBgC/U
+      9Ce+d7acVhbbFuScrNGqRn7x4tt1KaDpOvtDdv9rzuWGupdgDB5BMEP5iMDKgAUV
+      TJ47QyJT12QzSfqGr9O+to23g2+2g28AqTHZS8dNRqkIFT2z1FLqXDwxdCYDVSg6
+      Sv0qAbMszIFE0Vb8cx7xyL0TUgTlaRVLxYvl0DMpAoGAUdmZ5HeFcNFDX8mLTDqd
+      TAIZtJBswHbTKYk8GD0rFAxnYIgQMlU2GaxIpOeDIyt9SMiqUDG+t+uJa9KPt4vg
+      wEbQcobVK5WBBTSLRMllzvIVvgxi0LbBYj7XPsh9Tz4FyKdLB4IalEPug3PkK4lG
+      rukVblyI8YGDRscPP4U9XHU=
+      -----END PRIVATE KEY-----
+
+  # apigw secrets related
+  gen_bearer_token:
+    client_id: beypmyfpw6sj6knyun2wyvm5
+    client_secret: eK6ngaRbHN
+    grant_type: client_credentials
+  gen_commarch_token:
+    client_id: MyXLApp
+    client_secret: axiata@123
+    program_code: MYXL_PRE
+  gen_selfcare_bearer_token:
+    client_id: 6sp6bhtzhdvnmmad9zk8r42e
+    client_secret: XA41X7rfs5
+    grant_type: client_credentials
+    # move to token service per 20221211
+    #  gen_bearer_multipayment_token:
+    #    client_id: mvpk5wavsabcveusjuaqx2yn
+    #    client_secret: yx73YxWPuX
+    #    grant_type: client_credentials
+  gen_identity_token:
+    client_id: vez9mqqt2dy9jzjkbxqpw6px
+    client_secret: MVz3b2VHrw
+    grant_type: client_credentials
+  gen_commarch_postpaid_token:
+    client_id: MyXLApp
+    client_secret: axiata@123
+    program_code: MYXL_POST
+  gen_mccm_bearer_token:
+    client_id: 6sp6bhtzhdvnmmad9zk8r42e
+    client_secret: XA41X7rfs5
+    grant_type: client_credentials
+  gen_bss_bearer_token:
+    basic_token: UHhJNjZvYmZZSjRFdnQ0c3J2MnVuWXBEXzF3YTpvakJhWHE1TFNKVWZOX0VrY2xRZHNzMkVpZFVh
+    grant_type: client_credentials
+  gen_new_comm_bearer_token:
+    client_id: ubPKYx82x2SMcBItwjkrLG8xPWwa
+    client_secret: xfFf_W3soXELWUiXZ3R1PEbFZzoa
+    grant_type: client_credentials
+
+  # ciam related secrets
+  gen_revoke_ciam_token:
+    grant_type: client_credentials
+    client_id: fb0cde6228b21d89ec222b45efec54e7
+    client_secret: P@ssw0rd
+  gen_ciam_token:
+    grant_type: client_credentials
+    client_id: 199f1652ccda11ea87d00242ac130003
+    client_secret: P@ssw0rd
+  gen_ciam_consent_token:
+    grant_type: client_credentials
+    client_id: 199f1652ccda11ea87d00242ac130003
+    client_secret: P@ssw0rd
+
+  # cms related secrets
+  cms_token:
+    bearer_token: gf5x9zx8v6b5mszsz4wot9yu4234zqwe
+  gen_cms_bearer_token:
+    scope: api_access
+    username: xlapi
+    password: '3s-Xy<r>Ndc}&zJm'
+    grant_type: password
+    client_id: 9bb192a3-4ed0-43bc-b5e2-9c9c0eaceafb
+    client_secret: '123456789'

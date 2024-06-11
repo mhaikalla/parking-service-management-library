@@ -13,6 +13,7 @@ import (
 	"github.com/mhaikalla/parking-service-management-library/pkg/contexts"
 	"github.com/mhaikalla/parking-service-management-library/pkg/errs"
 	"github.com/mhaikalla/parking-service-management-library/pkg/file"
+	"github.com/mhaikalla/parking-service-management-library/pkg/helpers"
 )
 
 func NewParkingUsecase(ctx ...interface{}) IUsecaseParking {
@@ -356,4 +357,78 @@ func (ctx *usecaseObj) SetParkingOut(dc contexts.BearerContext, req *request.Par
 	resp.Data = req
 
 	return &resp, nil
+}
+
+func (ctx *usecaseObj) GetParkingData(dc contexts.BearerContext, req *request.GetParkingData) (*response.GetDataParkingResponse, *errs.Errs) {
+	resultData := response.GetDataParkingResponse{}
+	parkingStatusData := []models.ParkingVehicleStatus{}
+
+	fileNameParkingStatus := models.ParkingVehicleStatusTableName
+	if !ctx.FileSystem.IsFileExisting(fileNameParkingStatus) {
+		_, errCreate := ctx.FileSystem.CreateFile(fileNameParkingStatus)
+		if errCreate != nil {
+			return nil, errs.NewErrContext().
+				SetCode(errs.InternalServerError).
+				SetMessage(errCreate.Error())
+		}
+	} else {
+		parking, errloadData := ctx.FileSystem.LoadFile(fileNameParkingStatus)
+		if errloadData != nil {
+			return nil, errs.NewErrContext().
+				SetCode(errs.InternalServerError).
+				SetMessage(errloadData.Error())
+		}
+		if err := json.Unmarshal(parking, &parkingStatusData); err != nil {
+			return nil, errs.NewErrContext().
+				SetCode(errs.InternalServerError).
+				SetMessage(err.Error())
+		}
+	}
+
+	for _, p := range parkingStatusData {
+		if p.DeletedAt == nil && p.Color == req.Warna {
+			resultData.PlatNomor = append(resultData.PlatNomor, p.PlateNumber)
+		}
+	}
+
+	resultData.PlatNomor = helpers.RemoveDuplicateArrayStr(resultData.PlatNomor)
+
+	return &resultData, nil
+}
+
+func (ctx *usecaseObj) GetCountParkingData(dc contexts.BearerContext, req *request.GetCountParkingData) (*response.GetCountParkingResponse, *errs.Errs) {
+
+	resultData := response.GetCountParkingResponse{}
+
+	parkingStatusData := []models.ParkingVehicleStatus{}
+	totalCount := 0
+	fileNameParkingStatus := models.ParkingVehicleStatusTableName
+	if !ctx.FileSystem.IsFileExisting(fileNameParkingStatus) {
+		_, errCreate := ctx.FileSystem.CreateFile(fileNameParkingStatus)
+		if errCreate != nil {
+			return nil, errs.NewErrContext().
+				SetCode(errs.InternalServerError).
+				SetMessage(errCreate.Error())
+		}
+	} else {
+		parking, errloadData := ctx.FileSystem.LoadFile(fileNameParkingStatus)
+		if errloadData != nil {
+			return nil, errs.NewErrContext().
+				SetCode(errs.InternalServerError).
+				SetMessage(errloadData.Error())
+		}
+		if err := json.Unmarshal(parking, &parkingStatusData); err != nil {
+			return nil, errs.NewErrContext().
+				SetCode(errs.InternalServerError).
+				SetMessage(err.Error())
+		}
+	}
+
+	for _, p := range parkingStatusData {
+		if p.DeletedAt == nil && p.Type == req.Tipe {
+			totalCount += 1
+		}
+	}
+	resultData.JumlahKendaraan = totalCount
+	return &resultData, nil
 }
