@@ -3,6 +3,7 @@ package UsecaseParking
 import (
 	"encoding/json"
 	"reflect"
+	"strconv"
 	"sync"
 	"time"
 
@@ -139,11 +140,8 @@ func (ctx *usecaseObj) SetParkingIn(dc contexts.BearerContext, req *request.Park
 	return &resp, nil
 }
 
-func (ctx *usecaseObj) SetParkingOut(dc contexts.BearerContext, req *request.ParkingOutRequest) (*response.BaseMessageResponse, *errs.Errs) {
-	resp := response.BaseMessageResponse{
-		Message: "failed",
-		Data:    nil,
-	}
+func (ctx *usecaseObj) SetParkingOut(dc contexts.BearerContext, req *request.ParkingOutRequest) (*response.ParkingOutResponse, *errs.Errs) {
+	resp := response.ParkingOutResponse{}
 	parkingStatusData := []models.ParkingVehicleStatus{}
 	vehicleData := []models.Vehicle{}
 	parkingLotData := []models.ParkingLot{}
@@ -346,16 +344,10 @@ func (ctx *usecaseObj) SetParkingOut(dc contexts.BearerContext, req *request.Par
 			SetMessage(err.Error())
 	}
 
-	// stat, err := ctx.FileSystem.SaveData(models., parkingData)
-	// if !stat && err != nil {
-	// 	return nil, errs.NewErrContext().
-	// 		SetCode(errs.InternalServerError).
-	//
-	// 		SetMessage(err.Error())
-	// }
-	resp.Message = "Success"
-	resp.Data = req
-
+	resp.JumlahBayar = strconv.Itoa(totalPrice)
+	resp.PlatNomor = req.PlatNomor
+	resp.TanggalKeluar = dateNowStr
+	resp.TanggalMasuk = currentData.ParkingInDate
 	return &resp, nil
 }
 
