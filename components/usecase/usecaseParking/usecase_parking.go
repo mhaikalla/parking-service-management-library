@@ -83,12 +83,13 @@ func (ctx *usecaseObj) SetParkingIn(dc contexts.BearerContext, req *request.Park
 
 	dateNow := time.Now().UTC()
 
-	for _, p := range parkingStatusData {
-		if p.PlateNumber == req.PlatNomor && p.Status == constant.ParkingIn {
+	for i := len(parkingStatusData) - 1; i >= 0; i-- {
+		if parkingStatusData[i].PlateNumber == req.PlatNomor && parkingStatusData[i].Status == constant.ParkingIn {
 			return nil, errs.NewErrContext().
 				SetCode(errs.BadRequest).
 				SetMessage("This vehicle has already been parked")
 		}
+		break
 	}
 
 	for _, pld := range parkingLotData {
@@ -115,7 +116,7 @@ func (ctx *usecaseObj) SetParkingIn(dc contexts.BearerContext, req *request.Park
 		PlateNumber:    req.PlatNomor,
 		Type:           req.Tipe,
 		Color:          req.Warna,
-		ParkingInDate:  dateNow.String(),
+		ParkingInDate:  dateNow,
 		ParkingOutDate: nil,
 		Status:         constant.ParkingIn,
 		Price:          0,
@@ -259,7 +260,6 @@ func (ctx *usecaseObj) SetParkingOut(dc contexts.BearerContext, req *request.Par
 	currentParkingLotData := models.ParkingLot{}
 
 	dateNow := time.Now().UTC()
-	dateNowStr := dateNow.String()
 
 	lengthData := len(parkingStatusData)
 	if lengthData > 0 {
@@ -314,14 +314,9 @@ func (ctx *usecaseObj) SetParkingOut(dc contexts.BearerContext, req *request.Par
 			SetMessage("Parking Area Not Found")
 	}
 
-	t, err := time.Parse("2006-01-02 15:04:05", currentData.ParkingInDate)
-	if err != nil {
-		return nil, errs.NewErrContext().
-			SetCode(errs.InternalServerError).
-			SetMessage(err.Error())
-	}
-
-	totalPrice := currentVehicleData.FirstHourPrice + (int(dateNow.Sub(t).Hours()) * (currentVehicleData.FirstHourPrice * (currentVehicleData.PricePerHourPercent / 100)))
+	hourdiff := int(dateNow.Sub(currentData.ParkingInDate).Hours())
+	pricePerHour := float64(currentVehicleData.FirstHourPrice) * float64(currentVehicleData.PricePerHourPercent) / 100.0
+	totalPrice := currentVehicleData.FirstHourPrice + (hourdiff * int(pricePerHour))
 	parkingStatusData = append(parkingStatusData, models.ParkingVehicleStatus{
 		BaseEntity: models.BaseEntity{
 			Id:        len(parkingStatusData) + 1,
@@ -333,7 +328,7 @@ func (ctx *usecaseObj) SetParkingOut(dc contexts.BearerContext, req *request.Par
 		Type:           currentData.Type,
 		Color:          currentData.Color,
 		ParkingInDate:  currentData.ParkingInDate,
-		ParkingOutDate: &dateNowStr,
+		ParkingOutDate: &dateNow,
 		Status:         constant.ParkingOut,
 		Price:          totalPrice,
 	})
@@ -346,7 +341,7 @@ func (ctx *usecaseObj) SetParkingOut(dc contexts.BearerContext, req *request.Par
 
 	resp.JumlahBayar = strconv.Itoa(totalPrice)
 	resp.PlatNomor = req.PlatNomor
-	resp.TanggalKeluar = dateNowStr
+	resp.TanggalKeluar = dateNow
 	resp.TanggalMasuk = currentData.ParkingInDate
 	return &resp, nil
 }
